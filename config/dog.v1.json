@@ -1,0 +1,27 @@
+{
+  "species": "dog",
+  "lifeStages": ["puppy", "adult", "senior"],
+  "weightUnit": "kg",
+  "sizeClass": [
+    { "id": "small", "minKg": 0, "maxKg": 10 },
+    { "id": "medium", "minKg": 10, "maxKg": 25 },
+    { "id": "large", "minKg": 25, "maxKg": 200 }
+  ],
+  "activityFactors": {
+    "very_low": 0.8,
+    "low": 1.0,
+    "normal": 1.2,
+    "high": 1.4,
+    "athlete": 1.6
+  },
+  "conditions": ["ckd", "obesity", "pancreas", "allergy"],
+  "productTypes": ["dry", "wet", "treat", "supplement"],
+  "priorityNutrients": [
+    "protein",
+    "fat",
+    "phosphorus",
+    "sodium",
+    "ca_p_ratio",
+    "taurine"
+  ]
+}
