@@ -1,4 +1,3 @@
-// app/api/products-bulk/route.ts
 import { NextRequest, NextResponse } from "next/server";
 import Papa from "papaparse";
 import { supabase } from "@/lib/db";
