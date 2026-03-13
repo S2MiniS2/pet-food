@@ -1,36 +1,96 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Pet Food Recommendation Service
 
-## Getting Started
+반려견의 프로필 정보를 기반으로 사료를 추천하고 급여 기록을 관리할 수 있는 웹 서비스입니다.  
+사용자의 반려견 정보를 입력하면 영양 기준을 바탕으로 사료를 평가하고 추천 결과를 제공합니다.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 프로젝트 개요
+
+이 프로젝트는 반려견의 **체중, 생애주기, 활동량, 건강 상태** 등의 정보를 기반으로  
+적절한 사료를 추천하고 급여 기록을 관리할 수 있도록 설계된 서비스입니다.
+
+단순 제품 검색이 아니라  
+반려견 프로필 데이터를 기준으로 사료 영양 정보를 비교하여  
+추천 점수를 계산하는 구조로 구현했습니다.
+
+---
+
+## 주요 기능
+
+### 반려견 프로필 등록
+- 이름, 체중, 생애주기, 활동량, 건강 상태 입력
+- 프로필 데이터를 기반으로 추천 시스템 동작
+
+### 사료 추천 기능
+- 반려견 프로필 데이터를 기준으로 사료 평가
+- 단백질, 지방, 인, 나트륨 등 영양 기준을 비교하여 추천 점수 계산
+- 추천 사유 및 권장 급여량 제공
+
+### 사료 검색 기능
+- 사료 이름 기반 검색
+- 사료 타입 및 생애주기 필터링
+
+### 급여 기록 관리
+- 날짜별 급여 기록 저장
+- 월별 급여 기록 조회
+
+---
+
+## 기술 스택
+
+**Frontend**
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+
+**Backend / Database**
+- Supabase
+
+**기타**
+- Zod (입력 데이터 검증)
+- PapaParse (CSV 데이터 처리)
+
+---
+## 프로젝트 구조
+
+```text
+app
+├─ onboarding
+│  └─ profile        # 반려견 프로필 등록
+├─ recommend         # 사료 추천 페이지
+├─ products          # 사료 검색 페이지
+├─ feed
+│  └─ new            # 급여 기록 등록
+├─ api
+│  ├─ profile        # 프로필 저장 API
+│  ├─ recommend      # 사료 추천 로직
+│  ├─ products       # 사료 데이터 조회
+│  ├─ feed           # 급여 기록 저장
+│  └─ calendar       # 급여 기록 조회
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 추천 시스템 방식
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+사료 추천은 반려견 프로필 데이터를 기반으로 다음 항목을 비교하여 점수를 계산합니다.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- 단백질 함량
+- 지방 함량
+- 인 함량
+- 나트륨 함량
+- 칼슘 : 인 비율
+- 건강 상태 (예: 신장 질환 등)
 
-## Learn More
+각 조건을 기반으로 사료 점수를 계산하고  
+추천 결과와 추천 사유를 함께 제공합니다.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 실행 방법
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm install
+npm run dev
+---
